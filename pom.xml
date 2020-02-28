@@ -13,7 +13,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>backend-parent</name>
-    <description>慕课网meetingfile的后端运维系统</description>
+    <description>慕课网meetingfilm的后端运维系统</description>
 
     <modules>
         <module>backend-common</module>
