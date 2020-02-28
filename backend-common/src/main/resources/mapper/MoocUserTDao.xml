@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mooc.meeting.film.backend.common.dao.MoocUserTDao">
+
+    <resultMap type="com.mooc.meeting.film.backend.common.entity.MoocUserT" id="MoocUserTMap">
+        <result property="uuid" column="UUID" jdbcType="INTEGER"/>
+        <result property="userName" column="user_name" jdbcType="VARCHAR"/>
+        <result property="userPwd" column="user_pwd" jdbcType="VARCHAR"/>
+        <result property="nickName" column="nick_name" jdbcType="VARCHAR"/>
+        <result property="userSex" column="user_sex" jdbcType="INTEGER"/>
+        <result property="birthday" column="birthday" jdbcType="VARCHAR"/>
+        <result property="email" column="email" jdbcType="VARCHAR"/>
+        <result property="userPhone" column="user_phone" jdbcType="VARCHAR"/>
+        <result property="address" column="address" jdbcType="VARCHAR"/>
+        <result property="headUrl" column="head_url" jdbcType="VARCHAR"/>
+        <result property="biography" column="biography" jdbcType="VARCHAR"/>
+        <result property="lifeState" column="life_state" jdbcType="INTEGER"/>
+        <result property="beginTime" column="begin_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="MoocUserTMap">
+        select
+          UUID, user_name, user_pwd, nick_name, user_sex, birthday, email, user_phone, address, head_url, biography, life_state, begin_time, update_time
+        from mooc_meetingfilm.mooc_user_t
+        where UUID = #{uuid}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="MoocUserTMap">
+        select
+          UUID, user_name, user_pwd, nick_name, user_sex, birthday, email, user_phone, address, head_url, biography, life_state, begin_time, update_time
+        from mooc_meetingfilm.mooc_user_t
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="MoocUserTMap">
+        select
+          UUID, user_name, user_pwd, nick_name, user_sex, birthday, email, user_phone, address, head_url, biography, life_state, begin_time, update_time
+        from mooc_meetingfilm.mooc_user_t
+        <where>
+            <if test="uuid != null">
+                and UUID = #{uuid}
+            </if>
+            <if test="userName != null and userName != ''">
+                and user_name = #{userName}
+            </if>
+            <if test="userPwd != null and userPwd != ''">
+                and user_pwd = #{userPwd}
+            </if>
+            <if test="nickName != null and nickName != ''">
+                and nick_name = #{nickName}
+            </if>
+            <if test="userSex != null">
+                and user_sex = #{userSex}
+            </if>
+            <if test="birthday != null and birthday != ''">
+                and birthday = #{birthday}
+            </if>
+            <if test="email != null and email != ''">
+                and email = #{email}
+            </if>
+            <if test="userPhone != null and userPhone != ''">
+                and user_phone = #{userPhone}
+            </if>
+            <if test="address != null and address != ''">
+                and address = #{address}
+            </if>
+            <if test="headUrl != null and headUrl != ''">
+                and head_url = #{headUrl}
+            </if>
+            <if test="biography != null and biography != ''">
+                and biography = #{biography}
+            </if>
+            <if test="lifeState != null">
+                and life_state = #{lifeState}
+            </if>
+            <if test="beginTime != null">
+                and begin_time = #{beginTime}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="uuid" useGeneratedKeys="true">
+        insert into mooc_meetingfilm.mooc_user_t(user_name, user_pwd, nick_name, user_sex, birthday, email, user_phone, address, head_url, biography, life_state, begin_time, update_time)
+        values (#{userName}, #{userPwd}, #{nickName}, #{userSex}, #{birthday}, #{email}, #{userPhone}, #{address}, #{headUrl}, #{biography}, #{lifeState}, #{beginTime}, #{updateTime})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update mooc_meetingfilm.mooc_user_t
+        <set>
+            <if test="userName != null and userName != ''">
+                user_name = #{userName},
+            </if>
+            <if test="userPwd != null and userPwd != ''">
+                user_pwd = #{userPwd},
+            </if>
+            <if test="nickName != null and nickName != ''">
+                nick_name = #{nickName},
+            </if>
+            <if test="userSex != null">
+                user_sex = #{userSex},
+            </if>
+            <if test="birthday != null and birthday != ''">
+                birthday = #{birthday},
+            </if>
+            <if test="email != null and email != ''">
+                email = #{email},
+            </if>
+            <if test="userPhone != null and userPhone != ''">
+                user_phone = #{userPhone},
+            </if>
+            <if test="address != null and address != ''">
+                address = #{address},
+            </if>
+            <if test="headUrl != null and headUrl != ''">
+                head_url = #{headUrl},
+            </if>
+            <if test="biography != null and biography != ''">
+                biography = #{biography},
+            </if>
+            <if test="lifeState != null">
+                life_state = #{lifeState},
+            </if>
+            <if test="beginTime != null">
+                begin_time = #{beginTime},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime},
+            </if>
+        </set>
+        where UUID = #{uuid}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from mooc_meetingfilm.mooc_user_t where UUID = #{uuid}
+    </delete>
+
+</mapper>
