@@ -5,6 +5,7 @@ import com.mooc.meeting.film.user.entity.MoocBackendUserT;
 import com.mooc.meeting.film.user.service.MoocBackendUserTService;
 import com.mooc.meeting.film.user.vo.LoginReqVo;
 import com.mooc.meeting.film.utils.exception.CommonServiceException;
+import com.mooc.meeting.film.utils.util.JwtTokenUtil;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -45,8 +46,12 @@ public class MoocBackendUserTController {
         loginReqVo.checkParam();
         //randomKey token
         Map<String,Object> result=new HashMap<>();
-        result.put("randomKey","222");
-        result.put("token","token");
+        String userId = moocBackendUserTService.checkUser(loginReqVo.getUsername(), loginReqVo.getPassword());
+        JwtTokenUtil jwtTokenUtil=new JwtTokenUtil();
+        String randomKey = jwtTokenUtil.getRandomKey();
+        String token = jwtTokenUtil.generateToken(userId, randomKey);
+        result.put("randomKey",randomKey);
+        result.put("token",token);
         return result;
     }
 

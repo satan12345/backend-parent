@@ -20,7 +20,7 @@ public class GlobalExceptionAdvice {
                                                                       CommonServiceException ex) {
         BaseResponseVo<String> response = BaseResponseVo.serviceException(ex);
         String requestURI = req.getRequestURI();
-        log.error("发生自定义异常 requestURI={} ,CommonServiceException :",requestURI, ex);
+        log.error("发生自定义异常 requestURI={}  code={},CommonServiceException :",requestURI,ex.getCode(), ex);
         return response;
     }
 

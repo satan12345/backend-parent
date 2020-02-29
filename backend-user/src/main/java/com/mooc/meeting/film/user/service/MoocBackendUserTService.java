@@ -1,6 +1,8 @@
 package com.mooc.meeting.film.user.service;
 
 import com.mooc.meeting.film.user.entity.MoocBackendUserT;
+import com.mooc.meeting.film.utils.exception.CommonServiceException;
+
 import java.util.List;
 
 /**
@@ -10,6 +12,14 @@ import java.util.List;
  * @since 2020-02-29 15:30:52
  */
 public interface MoocBackendUserTService {
+
+    /**
+     *
+     * @param username
+     * @param password
+     * @throws CommonServiceException
+     */
+    String checkUser(String username, String password) throws CommonServiceException;
 
     /**
      * 通过ID查询单条数据
@@ -23,7 +33,7 @@ public interface MoocBackendUserTService {
      * 查询多条数据
      *
      * @param offset 查询起始位置
-     * @param limit 查询条数
+     * @param limit  查询条数
      * @return 对象列表
      */
     List<MoocBackendUserT> queryAllByLimit(int offset, int limit);
@@ -51,5 +61,6 @@ public interface MoocBackendUserTService {
      * @return 是否成功
      */
     boolean deleteById(Integer uuid);
+
 
 }

@@ -1,9 +1,13 @@
 package com.mooc.meeting.film.user.service.impl;
 
-import com.mooc.meeting.film.user.entity.MoocBackendUserT;
 import com.mooc.meeting.film.user.dao.MoocBackendUserTDao;
+import com.mooc.meeting.film.user.entity.MoocBackendUserT;
 import com.mooc.meeting.film.user.service.MoocBackendUserTService;
+import com.mooc.meeting.film.utils.exception.CommonServiceException;
+import com.mooc.meeting.film.utils.util.MD5Util;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -19,6 +23,22 @@ public class MoocBackendUserTServiceImpl implements MoocBackendUserTService {
     @Resource
     private MoocBackendUserTDao moocBackendUserTDao;
 
+    @Override
+    public String checkUser(String username,String password) throws CommonServiceException{
+        //根据用户名获取用户信息
+        MoocBackendUserT moocBackendUserT=new MoocBackendUserT();
+        moocBackendUserT.setUserName(username);
+        List<MoocBackendUserT> list = moocBackendUserTDao.select(moocBackendUserT);
+        if (CollectionUtils.isEmpty(list)) {
+            throw new CommonServiceException(-10,"用户不存在");
+        }
+        // 验证密码是否正确
+        boolean checkResult = StringUtils.equalsIgnoreCase(list.get(0).getUserPwd(), MD5Util.encrypt(password));
+        if (!checkResult) {
+            throw new CommonServiceException(-20,"密码错误");
+        }
+        return list.get(0).getUuid().toString();
+    }
     /**
      * 通过ID查询单条数据
      *
