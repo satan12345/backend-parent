@@ -1,21 +1,17 @@
 package com.mooc.meeting.film.user.dao;
 
-
 import com.mooc.meeting.film.common.config.MyMapper;
-import com.mooc.meeting.film.user.entity.MoocUserT;
+import com.mooc.meeting.film.user.entity.MoocBackendUserT;
 import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
 
-
 /**
- * 用户表(MoocUserT)表数据库访问层
+ * 后台用户表(MoocBackendUserT)表数据库访问层
  *
  * @author makejava
- * @since 2020-02-28 16:04:31
+ * @since 2020-02-29 15:30:52
  */
-
-public interface MoocUserTDao extends MyMapper<MoocUserT> {
+public interface MoocBackendUserTDao extends MyMapper<MoocBackendUserT> {
 
     /**
      * 通过ID查询单条数据
@@ -23,7 +19,7 @@ public interface MoocUserTDao extends MyMapper<MoocUserT> {
      * @param uuid 主键
      * @return 实例对象
      */
-    MoocUserT queryById(Integer uuid);
+    MoocBackendUserT queryById(Integer uuid);
 
     /**
      * 查询指定行数据
@@ -32,32 +28,32 @@ public interface MoocUserTDao extends MyMapper<MoocUserT> {
      * @param limit 查询条数
      * @return 对象列表
      */
-    List<MoocUserT> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);
+    List<MoocBackendUserT> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);
 
 
     /**
      * 通过实体作为筛选条件查询
      *
-     * @param moocUserT 实例对象
+     * @param moocBackendUserT 实例对象
      * @return 对象列表
      */
-    List<MoocUserT> queryAll(MoocUserT moocUserT);
+    List<MoocBackendUserT> queryAll(MoocBackendUserT moocBackendUserT);
 
     /**
      * 新增数据
      *
-     * @param moocUserT 实例对象
+     * @param moocBackendUserT 实例对象
      * @return 影响行数
      */
-    int insert(MoocUserT moocUserT);
+    int insert(MoocBackendUserT moocBackendUserT);
 
     /**
      * 修改数据
      *
-     * @param moocUserT 实例对象
+     * @param moocBackendUserT 实例对象
      * @return 影响行数
      */
-    int update(MoocUserT moocUserT);
+    int update(MoocBackendUserT moocBackendUserT);
 
     /**
      * 通过主键删除数据

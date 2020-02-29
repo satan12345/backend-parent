@@ -1,4 +1,4 @@
-package com.mooc.meeting.film.backend.common;
+package com.mooc.meeting.film.common;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

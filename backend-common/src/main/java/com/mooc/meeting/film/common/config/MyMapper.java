@@ -1,4 +1,4 @@
-package com.mooc.meeting.film.backend.common.config;
+package com.mooc.meeting.film.common.config;
 
 import tk.mybatis.mapper.common.Marker;
 import tk.mybatis.mapper.common.MySqlMapper;
