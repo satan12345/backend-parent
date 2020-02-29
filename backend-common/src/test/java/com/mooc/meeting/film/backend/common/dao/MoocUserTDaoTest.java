@@ -1,15 +1,12 @@
 package com.mooc.meeting.film.backend.common.dao;
-import java.util.Date;
-
-
 
 import com.mooc.meeting.film.backend.common.BackendCommonApplicationTests;
 import com.mooc.meeting.film.backend.common.entity.MoocUserT;
+import com.mooc.meeting.film.utils.vo.BaseResponseVo;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
 import javax.annotation.Resource;
-
 
 
 /**
@@ -25,9 +22,20 @@ public class MoocUserTDaoTest extends BackendCommonApplicationTests {
 
 
     @Test
-    public void testQueryById(){
+    public void testQueryById() {
 
         MoocUserT moocUserT = moocUserTDao.queryById(2);
-        log.info("查询到的结果为:{}",moocUserT);
+        log.info("查询到的结果为:{}", moocUserT);
+    }
+
+    @Test
+    public void test1() {
+        BaseResponseVo<String> baseResponseVo = new BaseResponseVo<>();
+        baseResponseVo.setCode(0);
+        baseResponseVo.setData("成功数据");
+        baseResponseVo.setMsg("成功");
+        System.out.println("baseResponseVo = " + baseResponseVo);
+
+
     }
 }
