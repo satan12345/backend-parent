@@ -1,7 +1,8 @@
-package com.mooc.meeting.film.backend.common.dao;
+package com.mooc.meeting.film.user.dao;
 
-import com.mooc.meeting.film.backend.common.BackendCommonApplicationTests;
-import com.mooc.meeting.film.backend.common.entity.MoocUserT;
+import com.mooc.meeting.film.user.BackendUserApplication;
+import com.mooc.meeting.film.user.BackendUserApplicationTests;
+import com.mooc.meeting.film.user.entity.MoocUserT;
 import com.mooc.meeting.film.utils.vo.BaseResponseVo;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -15,7 +16,7 @@ import javax.annotation.Resource;
  * @description
  */
 @Slf4j
-public class MoocUserTDaoTest extends BackendCommonApplicationTests {
+public class MoocUserTDaoTest extends BackendUserApplicationTests {
 
     @Resource
     MoocUserTDao moocUserTDao;

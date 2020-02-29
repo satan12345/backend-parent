@@ -1,6 +1,9 @@
-package com.mooc.meeting.film.backend.common.service;
+package com.mooc.meeting.film.user.service;
 
-import com.mooc.meeting.film.backend.common.entity.MoocUserT;
+
+
+import com.mooc.meeting.film.user.entity.MoocUserT;
+
 import java.util.List;
 
 /**

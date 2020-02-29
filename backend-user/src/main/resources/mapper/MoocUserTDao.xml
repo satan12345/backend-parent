@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.mooc.meeting.film.backend.common.dao.MoocUserTDao">
+<mapper namespace="com.mooc.meeting.film.user.dao.MoocUserTDao">
 
-    <resultMap type="com.mooc.meeting.film.backend.common.entity.MoocUserT" id="MoocUserTMap">
+    <resultMap type="com.mooc.meeting.film.user.entity.MoocUserT" id="MoocUserTMap">
         <result property="uuid" column="UUID" jdbcType="INTEGER"/>
         <result property="userName" column="user_name" jdbcType="VARCHAR"/>
         <result property="userPwd" column="user_pwd" jdbcType="VARCHAR"/>

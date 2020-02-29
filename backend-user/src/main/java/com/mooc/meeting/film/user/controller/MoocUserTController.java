@@ -1,8 +1,11 @@
-package com.mooc.meeting.film.backend.common.controller;
+package com.mooc.meeting.film.user.controller;
 
-import com.mooc.meeting.film.backend.common.entity.MoocUserT;
-import com.mooc.meeting.film.backend.common.service.MoocUserTService;
-import org.springframework.web.bind.annotation.*;
+
+import com.mooc.meeting.film.user.entity.MoocUserT;
+import com.mooc.meeting.film.user.service.MoocUserTService;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 

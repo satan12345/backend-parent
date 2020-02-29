@@ -1,8 +1,9 @@
-package com.mooc.meeting.film.backend.common.service.impl;
+package com.mooc.meeting.film.user.service.impl;
 
-import com.mooc.meeting.film.backend.common.entity.MoocUserT;
-import com.mooc.meeting.film.backend.common.dao.MoocUserTDao;
-import com.mooc.meeting.film.backend.common.service.MoocUserTService;
+
+import com.mooc.meeting.film.user.dao.MoocUserTDao;
+import com.mooc.meeting.film.user.entity.MoocUserT;
+import com.mooc.meeting.film.user.service.MoocUserTService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

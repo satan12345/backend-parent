@@ -1,9 +1,12 @@
-package com.mooc.meeting.film.backend.common.dao;
+package com.mooc.meeting.film.user.dao;
+
 
 import com.mooc.meeting.film.backend.common.config.MyMapper;
-import com.mooc.meeting.film.backend.common.entity.MoocUserT;
+import com.mooc.meeting.film.user.entity.MoocUserT;
 import org.apache.ibatis.annotations.Param;
+
 import java.util.List;
+
 
 /**
  * 用户表(MoocUserT)表数据库访问层
