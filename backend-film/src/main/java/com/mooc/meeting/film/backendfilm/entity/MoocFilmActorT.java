@@ -1,5 +1,11 @@
 package com.mooc.meeting.film.backendfilm.entity;
 
+import lombok.Data;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Table;
 import java.io.Serializable;
 
 /**
@@ -8,56 +14,34 @@ import java.io.Serializable;
  * @author makejava
  * @since 2020-03-04 17:02:10
  */
+@Table(name = "mooc_film_actor_t")
+@Data
 public class MoocFilmActorT implements Serializable {
     private static final long serialVersionUID = -25402686035876226L;
     /**
     * 主键编号
     */
+    @javax.persistence.Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "UUID")
     private Integer uuid;
     /**
     * 影片编号,对应mooc_film_t
     */
+    @Column(name = "film_id")
     private Integer filmId;
     /**
     * 演员编号,对应mooc_actor_t
     */
+    @Column(name = "actor_id")
     private Integer actorId;
     /**
     * 角色名称
     */
+    @Column(name = "role_name")
     private String roleName;
 
 
-    public Integer getUuid() {
-        return uuid;
-    }
 
-    public void setUuid(Integer uuid) {
-        this.uuid = uuid;
-    }
-
-    public Integer getFilmId() {
-        return filmId;
-    }
-
-    public void setFilmId(Integer filmId) {
-        this.filmId = filmId;
-    }
-
-    public Integer getActorId() {
-        return actorId;
-    }
-
-    public void setActorId(Integer actorId) {
-        this.actorId = actorId;
-    }
-
-    public String getRoleName() {
-        return roleName;
-    }
-
-    public void setRoleName(String roleName) {
-        this.roleName = roleName;
-    }
 
 }

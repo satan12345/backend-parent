@@ -1,10 +1,13 @@
 package com.mooc.meeting.film.backendfilm.service.impl;
 
+import com.mooc.meeting.film.backendfilm.controller.vo.FilmSavedReqVO;
+import com.mooc.meeting.film.backendfilm.dao.MoocActorTDao;
 import com.mooc.meeting.film.backendfilm.entity.MoocFilmT;
 import com.mooc.meeting.film.backendfilm.dao.MoocFilmTDao;
 import com.mooc.meeting.film.backendfilm.service.MoocFilmTService;
 import com.mooc.meeting.film.backendfilm.vo.DescribeActorsRespVO;
 import com.mooc.meeting.film.backendfilm.vo.DescribeFilmRespVO;
+import com.mooc.meeting.film.backendfilm.vo.DescribeFilmsRespVO;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -20,6 +23,8 @@ import java.util.List;
 public class MoocFilmTServiceImpl implements MoocFilmTService {
     @Resource
     private MoocFilmTDao moocFilmTDao;
+    @Resource
+    MoocActorTDao moocActorTDao;
 
     /**
      * 通过ID查询单条数据
@@ -85,7 +90,17 @@ public class MoocFilmTServiceImpl implements MoocFilmTService {
     }
 
     @Override
-    public List<DescribeFilmRespVO> describeFilms(Integer pageNo, Integer pageSize) {
+    public List<DescribeFilmsRespVO> describeFilms(Integer pageNo, Integer pageSize) {
+        return null;
+    }
+
+    @Override
+    public DescribeFilmRespVO describeFilmById(String filmId) {
+        return null;
+    }
+
+    @Override
+    public Integer saveFilm(FilmSavedReqVO filmSavedReqVO) {
         return null;
     }
 }

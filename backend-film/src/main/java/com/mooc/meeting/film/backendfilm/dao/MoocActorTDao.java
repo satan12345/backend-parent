@@ -1,6 +1,7 @@
 package com.mooc.meeting.film.backendfilm.dao;
 
 import com.mooc.meeting.film.backendfilm.entity.MoocActorT;
+import com.mooc.meeting.film.common.config.MyMapper;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
@@ -10,7 +11,7 @@ import java.util.List;
  * @author makejava
  * @since 2020-03-04 17:05:25
  */
-public interface MoocActorTDao {
+public interface MoocActorTDao extends MyMapper<MoocActorT> {
 
     /**
      * 通过ID查询单条数据

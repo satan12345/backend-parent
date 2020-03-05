@@ -1,5 +1,11 @@
 package com.mooc.meeting.film.backendfilm.entity;
 
+import lombok.Data;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Table;
 import java.io.Serializable;
 
 /**
@@ -8,44 +14,29 @@ import java.io.Serializable;
  * @author makejava
  * @since 2020-03-04 17:05:25
  */
+@Data
+@Table(name = "mooc_actor_t")
 public class MoocActorT implements Serializable {
     private static final long serialVersionUID = -58108616957397738L;
     /**
     * 主键编号
     */
+    @javax.persistence.Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "UUID")
     private Integer uuid;
     /**
     * 演员名称
     */
+    @Column(name = "actor_name")
     private String actorName;
     /**
     * 演员图片位置
     */
+    @Column(name = "actor_img")
     private String actorImg;
 
 
-    public Integer getUuid() {
-        return uuid;
-    }
 
-    public void setUuid(Integer uuid) {
-        this.uuid = uuid;
-    }
-
-    public String getActorName() {
-        return actorName;
-    }
-
-    public void setActorName(String actorName) {
-        this.actorName = actorName;
-    }
-
-    public String getActorImg() {
-        return actorImg;
-    }
-
-    public void setActorImg(String actorImg) {
-        this.actorImg = actorImg;
-    }
 
 }
