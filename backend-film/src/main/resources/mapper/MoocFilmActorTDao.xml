@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mooc.meeting.film.backendfilm.dao.MoocFilmActorTDao">
+
+    <resultMap type="com.mooc.meeting.film.backendfilm.entity.MoocFilmActorT" id="MoocFilmActorTMap">
+        <result property="uuid" column="UUID" jdbcType="INTEGER"/>
+        <result property="filmId" column="film_id" jdbcType="INTEGER"/>
+        <result property="actorId" column="actor_id" jdbcType="INTEGER"/>
+        <result property="roleName" column="role_name" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="MoocFilmActorTMap">
+        select
+          UUID, film_id, actor_id, role_name
+        from mooc_meetingfilm.mooc_film_actor_t
+        where UUID = #{uuid}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="MoocFilmActorTMap">
+        select
+          UUID, film_id, actor_id, role_name
+        from mooc_meetingfilm.mooc_film_actor_t
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="MoocFilmActorTMap">
+        select
+          UUID, film_id, actor_id, role_name
+        from mooc_meetingfilm.mooc_film_actor_t
+        <where>
+            <if test="uuid != null">
+                and UUID = #{uuid}
+            </if>
+            <if test="filmId != null">
+                and film_id = #{filmId}
+            </if>
+            <if test="actorId != null">
+                and actor_id = #{actorId}
+            </if>
+            <if test="roleName != null and roleName != ''">
+                and role_name = #{roleName}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="uuid" useGeneratedKeys="true">
+        insert into mooc_meetingfilm.mooc_film_actor_t(film_id, actor_id, role_name)
+        values (#{filmId}, #{actorId}, #{roleName})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update mooc_meetingfilm.mooc_film_actor_t
+        <set>
+            <if test="filmId != null">
+                film_id = #{filmId},
+            </if>
+            <if test="actorId != null">
+                actor_id = #{actorId},
+            </if>
+            <if test="roleName != null and roleName != ''">
+                role_name = #{roleName},
+            </if>
+        </set>
+        where UUID = #{uuid}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from mooc_meetingfilm.mooc_film_actor_t where UUID = #{uuid}
+    </delete>
+
+</mapper>
