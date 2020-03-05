@@ -1,5 +1,7 @@
 package com.mooc.meeting.film.user.dao;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.mooc.meeting.film.user.BackendUserApplication;
 import com.mooc.meeting.film.user.BackendUserApplicationTests;
 import com.mooc.meeting.film.user.entity.MoocBackendUserT;
@@ -10,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 
 /**
@@ -26,6 +29,13 @@ public class MoocUserTDaoTest extends BackendUserApplicationTests {
     MoocBackendUserTDao moocBackendUserTDao;
 
 
+    @Test
+    public void testPage(){
+        PageHelper.startPage(2,1);
+        List<MoocBackendUserT> select = moocBackendUserTDao.select(null);
+        PageInfo<MoocBackendUserT> pageInfo=new PageInfo<>(select);
+        log.info("pageInfo:{}", pageInfo);
+    }
     @Test
     public void testQueryById() {
 

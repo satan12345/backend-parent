@@ -24,7 +24,7 @@
 		<!--</plugin>-->
 	<!--</plugins>-->
 	<!--<plugins>-->
-		<!--&lt;!&ndash;<plugin interceptor="com.github.pagehelper.PageInterceptor" />&ndash;&gt;-->
+		<!--<plugin interceptor="com.github.pagehelper.PageInterceptor" />-->
 		<!--&lt;!&ndash; 分页助手 &ndash;&gt;-->
 		<!--<plugin interceptor="com.github.pagehelper.PageHelper">-->
 			<!--<property name="dialect" value="mysql"/>-->
