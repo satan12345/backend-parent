@@ -27,7 +27,8 @@ public class MoocActorTServiceImpl implements MoocActorTService {
      */
     @Override
     public MoocActorT queryById(Integer uuid) {
-        return this.moocActorTDao.queryById(uuid);
+
+        return null;
     }
 
     /**
@@ -39,7 +40,7 @@ public class MoocActorTServiceImpl implements MoocActorTService {
      */
     @Override
     public List<MoocActorT> queryAllByLimit(int offset, int limit) {
-        return this.moocActorTDao.queryAllByLimit(offset, limit);
+        return null;
     }
 
     /**
@@ -62,8 +63,7 @@ public class MoocActorTServiceImpl implements MoocActorTService {
      */
     @Override
     public MoocActorT update(MoocActorT moocActorT) {
-        this.moocActorTDao.update(moocActorT);
-        return this.queryById(moocActorT.getUuid());
+        return null;
     }
 
     /**
@@ -74,6 +74,6 @@ public class MoocActorTServiceImpl implements MoocActorTService {
      */
     @Override
     public boolean deleteById(Integer uuid) {
-        return this.moocActorTDao.deleteById(uuid) > 0;
+        return false;
     }
 }

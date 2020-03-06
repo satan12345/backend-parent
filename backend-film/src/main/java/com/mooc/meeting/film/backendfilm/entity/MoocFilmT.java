@@ -3,7 +3,10 @@ package com.mooc.meeting.film.backendfilm.entity;
 import lombok.Data;
 
 import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Table;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.io.Serializable;
 
@@ -20,6 +23,8 @@ public class MoocFilmT implements Serializable {
     /**
     * 主键编号
     */
+    @javax.persistence.Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "UUID")
     private Integer uuid;
     /**
@@ -76,7 +81,7 @@ public class MoocFilmT implements Serializable {
     * 影片上映时间
     */
     @Column(name = "film_time")
-    private Date filmTime;
+    private LocalDateTime filmTime;
     /**
     * 影片状态,1-正在热映，2-即将上映，3-经典影片
     */

@@ -27,7 +27,7 @@ public class MoocFilmInfoTServiceImpl implements MoocFilmInfoTService {
      */
     @Override
     public MoocFilmInfoT queryById(Integer uuid) {
-        return this.moocFilmInfoTDao.queryById(uuid);
+        return null;
     }
 
     /**
@@ -39,7 +39,7 @@ public class MoocFilmInfoTServiceImpl implements MoocFilmInfoTService {
      */
     @Override
     public List<MoocFilmInfoT> queryAllByLimit(int offset, int limit) {
-        return this.moocFilmInfoTDao.queryAllByLimit(offset, limit);
+        return null;
     }
 
     /**
@@ -50,8 +50,7 @@ public class MoocFilmInfoTServiceImpl implements MoocFilmInfoTService {
      */
     @Override
     public MoocFilmInfoT insert(MoocFilmInfoT moocFilmInfoT) {
-        this.moocFilmInfoTDao.insert(moocFilmInfoT);
-        return moocFilmInfoT;
+       return null;
     }
 
     /**
@@ -62,8 +61,7 @@ public class MoocFilmInfoTServiceImpl implements MoocFilmInfoTService {
      */
     @Override
     public MoocFilmInfoT update(MoocFilmInfoT moocFilmInfoT) {
-        this.moocFilmInfoTDao.update(moocFilmInfoT);
-        return this.queryById(moocFilmInfoT.getUuid());
+      return null;
     }
 
     /**
@@ -74,6 +72,6 @@ public class MoocFilmInfoTServiceImpl implements MoocFilmInfoTService {
      */
     @Override
     public boolean deleteById(Integer uuid) {
-        return this.moocFilmInfoTDao.deleteById(uuid) > 0;
+        return false;
     }
 }

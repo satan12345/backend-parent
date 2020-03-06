@@ -2,155 +2,44 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mooc.meeting.film.backendfilm.dao.MoocFilmTDao">
 
-    <resultMap type="com.mooc.meeting.film.backendfilm.entity.MoocFilmT" id="MoocFilmTMap">
-        <result property="uuid" column="UUID" jdbcType="INTEGER"/>
-        <result property="filmName" column="film_name" jdbcType="VARCHAR"/>
-        <result property="filmType" column="film_type" jdbcType="INTEGER"/>
-        <result property="imgAddress" column="img_address" jdbcType="VARCHAR"/>
-        <result property="filmScore" column="film_score" jdbcType="VARCHAR"/>
-        <result property="filmPresalenum" column="film_preSaleNum" jdbcType="INTEGER"/>
-        <result property="filmBoxOffice" column="film_box_office" jdbcType="INTEGER"/>
-        <result property="filmSource" column="film_source" jdbcType="INTEGER"/>
-        <result property="filmCats" column="film_cats" jdbcType="VARCHAR"/>
-        <result property="filmArea" column="film_area" jdbcType="INTEGER"/>
-        <result property="filmDate" column="film_date" jdbcType="INTEGER"/>
-        <result property="filmTime" column="film_time" jdbcType="TIMESTAMP"/>
-        <result property="filmStatus" column="film_status" jdbcType="INTEGER"/>
-    </resultMap>
 
-    <!--查询单个-->
-    <select id="queryById" resultMap="MoocFilmTMap">
-        select
-          UUID, film_name, film_type, img_address, film_score, film_preSaleNum, film_box_office, film_source, film_cats, film_area, film_date, film_time, film_status
-        from mooc_meetingfilm.mooc_film_t
-        where UUID = #{uuid}
-    </select>
-
-    <!--查询指定行数据-->
-    <select id="queryAllByLimit" resultMap="MoocFilmTMap">
-        select
-          UUID, film_name, film_type, img_address, film_score, film_preSaleNum, film_box_office, film_source, film_cats, film_area, film_date, film_time, film_status
-        from mooc_meetingfilm.mooc_film_t
-        limit #{offset}, #{limit}
-    </select>
-
-    <!--通过实体作为筛选条件查询-->
-    <select id="queryAll" resultMap="MoocFilmTMap">
-        select
-          UUID, film_name, film_type, img_address, film_score, film_preSaleNum, film_box_office, film_source, film_cats, film_area, film_date, film_time, film_status
-        from mooc_meetingfilm.mooc_film_t
-        <where>
-            <if test="uuid != null">
-                and UUID = #{uuid}
-            </if>
-            <if test="filmName != null and filmName != ''">
-                and film_name = #{filmName}
-            </if>
-            <if test="filmType != null">
-                and film_type = #{filmType}
-            </if>
-            <if test="imgAddress != null and imgAddress != ''">
-                and img_address = #{imgAddress}
-            </if>
-            <if test="filmScore != null and filmScore != ''">
-                and film_score = #{filmScore}
-            </if>
-            <if test="filmPresalenum != null">
-                and film_preSaleNum = #{filmPresalenum}
-            </if>
-            <if test="filmBoxOffice != null">
-                and film_box_office = #{filmBoxOffice}
-            </if>
-            <if test="filmSource != null">
-                and film_source = #{filmSource}
-            </if>
-            <if test="filmCats != null and filmCats != ''">
-                and film_cats = #{filmCats}
-            </if>
-            <if test="filmArea != null">
-                and film_area = #{filmArea}
-            </if>
-            <if test="filmDate != null">
-                and film_date = #{filmDate}
-            </if>
-            <if test="filmTime != null">
-                and film_time = #{filmTime}
-            </if>
-            <if test="filmStatus != null">
-                and film_status = #{filmStatus}
-            </if>
-        </where>
-    </select>
-
-    <!--新增所有列-->
-    <insert id="insert" keyProperty="uuid" useGeneratedKeys="true">
-        insert into mooc_meetingfilm.mooc_film_t(film_name, film_type, img_address, film_score, film_preSaleNum, film_box_office, film_source, film_cats, film_area, film_date, film_time, film_status)
-        values (#{filmName}, #{filmType}, #{imgAddress}, #{filmScore}, #{filmPresalenum}, #{filmBoxOffice}, #{filmSource}, #{filmCats}, #{filmArea}, #{filmDate}, #{filmTime}, #{filmStatus})
-    </insert>
-
-    <!--通过主键修改数据-->
-    <update id="update">
-        update mooc_meetingfilm.mooc_film_t
-        <set>
-            <if test="filmName != null and filmName != ''">
-                film_name = #{filmName},
-            </if>
-            <if test="filmType != null">
-                film_type = #{filmType},
-            </if>
-            <if test="imgAddress != null and imgAddress != ''">
-                img_address = #{imgAddress},
-            </if>
-            <if test="filmScore != null and filmScore != ''">
-                film_score = #{filmScore},
-            </if>
-            <if test="filmPresalenum != null">
-                film_preSaleNum = #{filmPresalenum},
-            </if>
-            <if test="filmBoxOffice != null">
-                film_box_office = #{filmBoxOffice},
-            </if>
-            <if test="filmSource != null">
-                film_source = #{filmSource},
-            </if>
-            <if test="filmCats != null and filmCats != ''">
-                film_cats = #{filmCats},
-            </if>
-            <if test="filmArea != null">
-                film_area = #{filmArea},
-            </if>
-            <if test="filmDate != null">
-                film_date = #{filmDate},
-            </if>
-            <if test="filmTime != null">
-                film_time = #{filmTime},
-            </if>
-            <if test="filmStatus != null">
-                film_status = #{filmStatus},
-            </if>
-        </set>
-        where UUID = #{uuid}
-    </update>
-
-    <!--通过主键删除-->
-    <delete id="deleteById">
-        delete from mooc_meetingfilm.mooc_film_t where UUID = #{uuid}
-    </delete>
 
     <select id="describeFilms" resultType="com.mooc.meeting.film.backendfilm.vo.DescribeFilmsRespVO">
-        SELECT
-            film.`UUID` AS  filmId,
-            film.`film_status` AS filmStatus,
-            info.`film_en_name` AS filmEnName,
-            film.`film_score` AS filmScore,
-            film.`film_name` AS filmName,
-            film.`film_preSaleNum` AS preSaleNum,
-            film.`film_box_office` AS boxOffice,
-            film.`film_time` AS filmTime,
-            info.`film_length` AS filmLength,
-            film.`img_address` AS mainImg
+        SELECT film.`UUID`            AS filmId,
+               film.`film_status`     AS filmStatus,
+               info.`film_en_name`    AS filmEnName,
+               film.`film_score`      AS filmScore,
+               film.`film_name`       AS filmName,
+               film.`film_preSaleNum` AS preSaleNum,
+               film.`film_box_office` AS boxOffice,
+               film.`film_time`       AS filmTime,
+               info.`film_length`     AS filmLength,
+               film.`img_address`     AS mainImg
         FROM mooc_film_t film
                  LEFT JOIN mooc_film_info_t info ON film.`UUID` = info.`film_id`
+    </select>
+    <select id="describeFilmById" resultType="com.mooc.meeting.film.backendfilm.vo.DescribeFilmRespVO">
+        SELECT film.`UUID`                       AS filmId,
+               film.`film_name`                  AS filmName,
+               info.`film_length`                AS filmLength,
+               (SELECT GROUP_CONCAT(show_name SEPARATOR ',')
+                FROM mooc_cat_dict_t cat
+                WHERE FIND_IN_SET(
+                              cat.`UUID`, (
+                            SELECT REPLACE(TRIM(BOTH '#' FROM film.film_cats), "#", ",")
+                            FROM mooc_film_t f
+                            WHERE f.uuid = film.`uuid`
+                        )
+                          ))                     AS filmCats,
+               (SELECT GROUP_CONCAT(role_name SEPARATOR ',')
+                FROM mooc_film_actor_t actor
+                WHERE actor.film_id = film.uuid) AS actors,
+               film.`img_address`                AS imgAddress,
+               info.`film_imgs`                  AS subAddress
+        FROM mooc_film_t film
+                 LEFT JOIN mooc_film_info_t info
+                           ON film.`UUID` = info.`film_id`
+        where film.`uuid` = #{filmId}
     </select>
 
 
