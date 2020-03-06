@@ -1,5 +1,7 @@
 package com.mooc.meeting.film.backendcinema.service;
 
+import com.mooc.meeting.film.backendcinema.controller.vo.CinemaSavedReqVO;
+import com.mooc.meeting.film.backendcinema.controller.vo.DescribeCinemasRespVO;
 import com.mooc.meeting.film.backendcinema.entity.MoocCinemaT;
 import java.util.List;
 
@@ -12,5 +14,7 @@ import java.util.List;
 public interface MoocCinemaTService {
 
 
+    void saveCinema(CinemaSavedReqVO cinemaSavedReqVO);
 
+    List<DescribeCinemasRespVO> describeCinemas(Integer pageNo, Integer pageSize);
 }
