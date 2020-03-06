@@ -1,6 +1,7 @@
 package com.mooc.meeting.film.backendfilm.dao;
 
 import com.mooc.meeting.film.backendfilm.entity.MoocFilmT;
+import com.mooc.meeting.film.backendfilm.vo.DescribeFilmsRespVO;
 import com.mooc.meeting.film.common.config.MyMapper;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
@@ -63,4 +64,5 @@ public interface MoocFilmTDao extends MyMapper<MoocFilmT> {
      */
     int deleteById(Integer uuid);
 
+    List<DescribeFilmsRespVO> describeFilms(int skip, Integer pageSize);
 }

@@ -137,4 +137,21 @@
         delete from mooc_meetingfilm.mooc_film_t where UUID = #{uuid}
     </delete>
 
+    <select id="describeFilms" resultType="com.mooc.meeting.film.backendfilm.vo.DescribeFilmsRespVO">
+        SELECT
+            film.`UUID` AS  filmId,
+            film.`film_status` AS filmStatus,
+            info.`film_en_name` AS filmEnName,
+            film.`film_score` AS filmScore,
+            film.`film_name` AS filmName,
+            film.`film_preSaleNum` AS preSaleNum,
+            film.`film_box_office` AS boxOffice,
+            film.`film_time` AS filmTime,
+            info.`film_length` AS filmLength,
+            film.`img_address` AS mainImg
+        FROM mooc_film_t film
+                 LEFT JOIN mooc_film_info_t info ON film.`UUID` = info.`film_id`
+    </select>
+
+
 </mapper>
