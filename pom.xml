@@ -22,6 +22,7 @@
         <module>backend-eureka-server</module>
         <module>backend-show</module>
         <module>backend-film</module>
+        <module>backend-cinema</module>
     </modules>
     <properties>
         <java.version>1.8</java.version>
