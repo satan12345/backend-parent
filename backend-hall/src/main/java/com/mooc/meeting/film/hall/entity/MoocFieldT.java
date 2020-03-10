@@ -1,5 +1,8 @@
 package com.mooc.meeting.film.hall.entity;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import java.io.Serializable;
 
 /**
@@ -10,9 +13,13 @@ import java.io.Serializable;
  */
 public class MoocFieldT implements Serializable {
     private static final long serialVersionUID = 888142219282437784L;
+
     /**
     * 主键编号
     */
+    @javax.persistence.Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "UUID")
     private Integer uuid;
     /**
     * 影院编号

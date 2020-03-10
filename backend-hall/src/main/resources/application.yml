@@ -14,7 +14,7 @@ spring:
     filters: log4j,wall,mergeStat
 
 server:
-  port: 8401
+  port: 8501
 logging:
   config: classpath:logback.xml
 

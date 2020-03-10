@@ -1,10 +1,15 @@
 package com.mooc.meeting.film.hall.controller;
 
+import com.mooc.meeting.film.common.annotation.UseResponseAdvice;
+import com.mooc.meeting.film.hall.controller.vo.HallSavedReqVO;
+import com.mooc.meeting.film.hall.controller.vo.HallsReqVO;
+import com.mooc.meeting.film.hall.controller.vo.HallsRespVO;
 import com.mooc.meeting.film.hall.entity.MoocHallFilmInfoT;
 import com.mooc.meeting.film.hall.service.MoocHallFilmInfoTService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * 影厅电影信息表(MoocHallFilmInfoT)表控制层
@@ -13,7 +18,8 @@ import javax.annotation.Resource;
  * @since 2020-03-06 19:28:45
  */
 @RestController
-@RequestMapping("moocHallFilmInfoT")
+@RequestMapping("/hall")
+@UseResponseAdvice
 public class MoocHallFilmInfoTController {
     /**
      * 服务对象
@@ -22,14 +28,33 @@ public class MoocHallFilmInfoTController {
     private MoocHallFilmInfoTService moocHallFilmInfoTService;
 
     /**
-     * 通过主键查询单条数据
-     *
-     * @param id 主键
-     * @return 单条数据
+     * 获取影院全部播放厅接口
+     * @param hallsReqVO
+     * @return
      */
-    @GetMapping("selectOne")
-    public MoocHallFilmInfoT selectOne(Integer id) {
-        return this.moocHallFilmInfoTService.queryById(id);
+    @RequestMapping(value = "/describeHalls", method = RequestMethod.GET)
+    public List<HallsRespVO> describeHalls(HallsReqVO hallsReqVO) {
+
+
+        List<HallsRespVO> list = moocHallFilmInfoTService.describeHalls(hallsReqVO);
+        return list;
+//        Map<String, Object> halls = descrbePageResult(page, "halls");
+//
+//        return BaseResponseVO.success(halls);
+
+
     }
+
+    @RequestMapping(value = "/hall:add",method = RequestMethod.POST)
+    public void saveHall(@RequestBody HallSavedReqVO hallSavedReqVO) {
+
+        //hallSavedReqVO.checkParam();
+
+        moocHallFilmInfoTService.saveHall(hallSavedReqVO);
+
+        //return BaseResponseVO.success();
+    }
+
+
 
 }

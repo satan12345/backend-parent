@@ -9,7 +9,7 @@ import tk.mybatis.spring.annotation.MapperScan;
         "com.mooc.meeting.film.hall",
         "com.mooc.meeting.film.common",
 })
-@MapperScan(basePackages = "com.mooc.meeting.film.backendfilm.dao")
+@MapperScan(basePackages = "com.mooc.meeting.film.hall.dao")
 @EnableDiscoveryClient
 public class BackendHallApplication {
 

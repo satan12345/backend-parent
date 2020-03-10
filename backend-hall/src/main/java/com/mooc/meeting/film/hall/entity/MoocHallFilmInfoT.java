@@ -1,5 +1,8 @@
 package com.mooc.meeting.film.hall.entity;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import java.io.Serializable;
 
 /**
@@ -13,6 +16,9 @@ public class MoocHallFilmInfoT implements Serializable {
     /**
     * 主键编号
     */
+    @javax.persistence.Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "UUID")
     private Integer uuid;
     /**
     * 电影编号
